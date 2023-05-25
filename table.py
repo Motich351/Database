@@ -306,7 +306,7 @@ class Ui_MainWindow(object):
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
-        self.SearchWorke.setText(_translate("MainWindow", "поиск"))
+        self.SearchWorke.setText(_translate("MainWindow", "Поиск"))
         item = self.tableWorker.horizontalHeaderItem(0)
         item.setText(_translate("MainWindow", "id"))
         item = self.tableWorker.horizontalHeaderItem(1)
