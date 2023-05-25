@@ -1,6 +1,6 @@
 from database import Client, create_session, global_init, Payment
 
-global_init("db.db")
+global_init("database/db.db")
 session = create_session()
 clients = session.query(Client).all()
 
