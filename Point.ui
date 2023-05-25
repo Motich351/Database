@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>Dialog</class>
- <widget class="QDialog" name="Dialog">
+ <class>Point</class>
+ <widget class="QDialog" name="Point">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>182</width>
-    <height>194</height>
+    <width>227</width>
+    <height>268</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -19,40 +19,16 @@
      <item>
       <widget class="QLabel" name="label">
        <property name="text">
-        <string>Изменение клиента</string>
+        <string>Изменение точки</string>
        </property>
       </widget>
      </item>
      <item>
       <layout class="QHBoxLayout" name="horizontalLayout">
        <item>
-        <widget class="QLabel" name="idClient">
+        <widget class="QLabel" name="idP">
          <property name="text">
           <string>id</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <spacer name="horizontalSpacer_2">
-         <property name="orientation">
-          <enum>Qt::Horizontal</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>40</width>
-           <height>20</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
-      </layout>
-     </item>
-     <item>
-      <layout class="QHBoxLayout" name="horizontalLayout_2">
-       <item>
-        <widget class="QLabel" name="FIOClient">
-         <property name="text">
-          <string>ФИО</string>
          </property>
         </widget>
        </item>
@@ -69,17 +45,41 @@
          </property>
         </spacer>
        </item>
+      </layout>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout_2">
        <item>
-        <widget class="QLineEdit" name="lineFIOClient"/>
+        <widget class="QLabel" name="Address">
+         <property name="text">
+          <string>Адрес</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="horizontalSpacer_2">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <widget class="QLineEdit" name="lineAddress"/>
        </item>
       </layout>
      </item>
      <item>
       <layout class="QHBoxLayout" name="horizontalLayout_3">
        <item>
-        <widget class="QLabel" name="PhoneClient">
+        <widget class="QLabel" name="label_4">
          <property name="text">
-          <string>Телефон</string>
+          <string>Доход</string>
          </property>
         </widget>
        </item>
@@ -102,7 +102,34 @@
       </layout>
      </item>
      <item>
-      <widget class="QPushButton" name="SaveClient">
+      <layout class="QHBoxLayout" name="horizontalLayout_4">
+       <item>
+        <widget class="QLabel" name="Product">
+         <property name="text">
+          <string>Товар</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="horizontalSpacer_4">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <widget class="QComboBox" name="comboBox"/>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <widget class="QPushButton" name="pushButton">
        <property name="text">
         <string>Сохранить</string>
        </property>
