@@ -95,21 +95,24 @@ class WorkerUpdater(QDialog, Ui_WorkerAdd):
         self.worker = self.session.query(Worker).get(worker_id)
         self.label_2.setText(str(self.worker.id))
         self.lineFIOWorker.setText(str(self.worker.fullname))
-        #ranks = self.session.query(Worker).get(Worker.jobrank)
-        #self.ChooseRankWorker.setText(str(self.worker.jobrank))
+        self.WorkerRanks = ['Админ','Уборщик','Начальник']
+        for WorkerRank in self.WorkerRanks:
+            self.ChooseRankWorker.addItem(WorkerRank)
         self.linePassportWorker_2.setText(str(self.worker.phone))
         self.lineSalaryWorker.setText(str(self.worker.salary))
         self.linePassportWorker.setText(str(self.worker.passport))
         shops = self.session.query(Shop).filter(Shop.id != self.worker.shop_id).all()
         self.ChooseWorkerPoint.addItem(self.worker.shop.address, self.worker.shop.id)
         for shop in shops:
-            self.comboBox.addItem(shop.address, shop.id)
+            self.ChooseWorkerPoint.addItem(shop.address, shop.id)
 
         self.SaveWorker.clicked.connect(self.save_data)
 
     def save_data(self):
         self.worker.fullname = self.lineFIOWorker.text()
-        #self.student.bdate = self.ChooseRankWorker.text()
+        cb = self.ChooseRankWorker.currentIndex()
+        RankWork = self.ChooseRankWorker.itemData(cb)
+        self.worker.jobrank = RankWork
         self.worker.phone = self.linePassportWorker_2.text()
         self.worker.salary = self.lineSalaryWorker.text()
         self.worker.passport = self.linePassportWorker.text()

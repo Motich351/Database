@@ -3,6 +3,10 @@ from sqlalchemy.orm import relationship
 
 from .base_meta import Base
 
+
+#class WorkerRank(IntEnum):
+
+
 class Worker(Base):
     __tablename__ = 'worker'
     __table_args__ = {'extend_existing': True}
@@ -13,7 +17,6 @@ class Worker(Base):
     salary = Column(Integer, nullable=False)
     phone = Column(Integer, nullable=False)
     passport = Column(Integer, nullable=False)
-    #point = Column(CHAR)
     shop_id = Column(ForeignKey('shop.id'), nullable=True)
 
     shop = relationship('Shop')
