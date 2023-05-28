@@ -4,7 +4,7 @@ from database.shop import Shop
 import sys
 
 from PyQt5.QtWidgets import QApplication, QWidget, QPushButton, QMainWindow, QTableWidgetItem, QFileDialog, \
-    QInputDialog, QColorDialog, QDialog
+    QInputDialog, QColorDialog, QDialog, QMessageBox
 
 from ui_Worker import Ui_WorkerAdd
 from ui_Product import Ui_ProductAdd
@@ -29,7 +29,7 @@ class TableViewer(QMainWindow, Ui_MainWindow):
         self.tableWorker.doubleClicked.connect(self.update_worker)
         self.AddWorker.clicked.connect(self.add_worker)
         self.SearchWorker.clicked.connect(self.search_worker)
-
+        self.DeleteWorker.clicked.connect(self.delete_worker)
 
     def add_worker(self):
         self.worker_adder = WorkerAdder(self.session)
@@ -129,6 +129,30 @@ class TableViewer(QMainWindow, Ui_MainWindow):
             self.tableWorker.setItem(row, 4, QTableWidgetItem(str(worker.salary)))
             self.tableWorker.setItem(row, 5, QTableWidgetItem(str(worker.passport)))
             self.tableWorker.setItem(row, 6, QTableWidgetItem(str(worker.shop.address)))
+
+    def delete_worker(self):
+        selected_rows = self.tableWorker.selectionModel().selectedRows()
+        if len(selected_rows) == 0:
+            return  # No row selected, do nothing
+
+        # Confirm deletion
+        reply = QMessageBox.question(
+            self, "Удалить работника", "Удалить выбранного работника?",
+            QMessageBox.Yes | QMessageBox.No
+        )
+        if reply == QMessageBox.No:
+            return  # Deletion canceled
+
+        for index in selected_rows:
+            current_row = index.row()
+            worker_id = int(self.tableWorker.item(current_row, 0).text())
+
+            # Delete the worker from the database
+            worker = self.session.query(Worker).get(worker_id)
+            self.session.delete(worker)
+            self.session.commit()
+
+        self.load_table()  # Update the table after deletion
 
 
 class WorkerUpdater(QDialog, Ui_WorkerAdd):
