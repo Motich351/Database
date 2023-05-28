@@ -13,7 +13,7 @@ from ui_table import Ui_MainWindow
 
 from PyQt5.QtCore import Qt, QModelIndex
 
-#Добавление работника
+
 class WorkerAdder(QDialog, Ui_WorkerAdd):
     def __init__(self, session):
         super().__init__()
@@ -27,7 +27,9 @@ class WorkerAdder(QDialog, Ui_WorkerAdd):
         self.linePassportWorker.setText("")
 
         self.ChooseRankWorker.addItems(['Админ', 'Уборщик', 'Начальник'])
-        self.ChooseWorkerPoint.addItems([shop.address for shop in self.session.query(Shop)])
+        shops = self.session.query(Shop).all()
+        for shop in shops:
+            self.ChooseWorkerPoint.addItem(shop.address, shop.id)
 
         self.SaveWorker.clicked.connect(self.save_data)
 
@@ -38,8 +40,9 @@ class WorkerAdder(QDialog, Ui_WorkerAdd):
             phone=self.linePassportWorker_2.text(),
             salary=self.lineSalaryWorker.text(),
             passport=self.linePassportWorker.text(),
-            shop_id=self.ChooseWorkerPoint.currentData()
+            shop_id=int(self.ChooseWorkerPoint.currentData())
         )
+        self.accept()
 
 
 class TableViewer(QMainWindow, Ui_MainWindow):
@@ -63,7 +66,7 @@ class TableViewer(QMainWindow, Ui_MainWindow):
         if self.worker_adder.exec_():
             new_worker = Worker(
                 fullname=self.worker_adder.lineFIOWorker.text(),
-                jobrank=self.worker_adder.ChooseRankWorker.currentText(0),
+                jobrank=self.worker_adder.ChooseRankWorker.currentText(),
                 phone=self.worker_adder.linePassportWorker_2.text(),
                 salary=self.worker_adder.lineSalaryWorker.text(),
                 passport=self.worker_adder.linePassportWorker.text(),

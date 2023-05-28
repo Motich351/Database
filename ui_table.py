@@ -26,9 +26,9 @@ class Ui_MainWindow(object):
         self.WorkerLine = QtWidgets.QLineEdit(self.worker)
         self.WorkerLine.setObjectName("WorkerLine")
         self.horizontalLayout.addWidget(self.WorkerLine)
-        self.SearchWorke = QtWidgets.QPushButton(self.worker)
-        self.SearchWorke.setObjectName("SearchWorke")
-        self.horizontalLayout.addWidget(self.SearchWorke)
+        self.SearchWorker = QtWidgets.QPushButton(self.worker)
+        self.SearchWorker.setObjectName("SearchWorker")
+        self.horizontalLayout.addWidget(self.SearchWorker)
         self.verticalLayout_2.addLayout(self.horizontalLayout)
         self.horizontalLayout_6 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_6.setObjectName("horizontalLayout_6")
@@ -320,7 +320,7 @@ class Ui_MainWindow(object):
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
-        self.SearchWorke.setText(_translate("MainWindow", "Поиск"))
+        self.SearchWorker.setText(_translate("MainWindow", "Поиск"))
         item = self.tableWorker.horizontalHeaderItem(0)
         item.setText(_translate("MainWindow", "id"))
         item = self.tableWorker.horizontalHeaderItem(1)
