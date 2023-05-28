@@ -1,3 +1,5 @@
+from sqlalchemy import or_
+
 from database.base_meta import global_init, create_session
 from database.worker import Worker
 from database.shop import Shop
@@ -131,24 +133,32 @@ class TableViewer(QMainWindow, Ui_MainWindow):
             self.tableWorker.setItem(row, 6, QTableWidgetItem(str(worker.shop.address)))
 
     def delete_worker(self):
-        selected_rows = self.tableWorker.selectionModel().selectedRows()
-        if len(selected_rows) == 0:
-            return  # No row selected, do nothing
+        search_text = self.WorkerLine.text().strip()
+        if not search_text:
+            return  # Empty search text, do nothing
 
         # Confirm deletion
         reply = QMessageBox.question(
-            self, "Удалить работника", "Удалить выбранного работника?",
+            self, "Delete Worker", "Are you sure you want to delete the worker(s) matching the search?",
             QMessageBox.Yes | QMessageBox.No
         )
         if reply == QMessageBox.No:
             return  # Deletion canceled
 
-        for index in selected_rows:
-            current_row = index.row()
-            worker_id = int(self.tableWorker.item(current_row, 0).text())
+        # Retrieve workers matching the search criteria
+        workers = self.session.query(Worker).filter(
+            or_(
+                Worker.fullname.ilike(f'%{search_text}%'),
+                Worker.phone.ilike(f'%{search_text}%'),
+                Worker.passport.ilike(f'%{search_text}%'),
+                Worker.jobrank.ilike(f'%{search_text}%'),
+                Worker.salary.ilike(f'%{search_text}%'),
+                Worker.shop.has(Shop.address.ilike(f'%{search_text}%'))
+            )
+        ).all()
 
+        for worker in workers:
             # Delete the worker from the database
-            worker = self.session.query(Worker).get(worker_id)
             self.session.delete(worker)
             self.session.commit()
 
