@@ -139,7 +139,6 @@ class TableViewer(QMainWindow, Ui_MainWindow):
             if not search_text:
                 return  # Empty search text, do nothing
 
-            # Retrieve workers matching the search criteria
             workers = self.session.query(Worker).filter(
                 or_(
                     Worker.fullname.ilike(f'%{search_text}%'),
@@ -155,13 +154,12 @@ class TableViewer(QMainWindow, Ui_MainWindow):
             if not selected_rows:
                 return  # No rows selected, do nothing
 
-            # Retrieve workers from the selected rows
             workers = [self.session.query(Worker).get(int(self.tableWorker.item(row.row(), 0).text())) for row in
                        selected_rows]
 
         # Confirm deletion
         reply = QMessageBox.question(
-            self, "Delete Worker", "Are you sure you want to delete the selected worker(s)?",
+            self, "Удалить работника", "Удалить работника(ов)?",
             QMessageBox.Yes | QMessageBox.No
         )
         if reply == QMessageBox.No:
