@@ -13,6 +13,34 @@ from ui_table import Ui_MainWindow
 
 from PyQt5.QtCore import Qt, QModelIndex
 
+#Добавление работника
+class WorkerAdder(QDialog, Ui_WorkerAdd):
+    def __init__(self, session):
+        super().__init__()
+        self.setupUi(self)
+
+        self.session = session
+        self.worker = None
+        self.lineFIOWorker.setText("")
+        self.linePassportWorker_2.setText("")
+        self.lineSalaryWorker.setText("")
+        self.linePassportWorker.setText("")
+
+        self.ChooseRankWorker.addItems(['Админ', 'Уборщик', 'Начальник'])
+        self.ChooseWorkerPoint.addItems([shop.address for shop in self.session.query(Shop)])
+
+        self.SaveWorker.clicked.connect(self.save_data)
+
+    def save_data(self):
+        self.worker = Worker(
+            fullname=self.lineFIOWorker.text(),
+            jobrank=self.ChooseRankWorker.currentText(),
+            phone=self.linePassportWorker_2.text(),
+            salary=self.lineSalaryWorker.text(),
+            passport=self.linePassportWorker.text(),
+            shop_id=self.ChooseWorkerPoint.currentData()
+        )
+
 
 class TableViewer(QMainWindow, Ui_MainWindow):
     def __init__(self):
@@ -25,11 +53,25 @@ class TableViewer(QMainWindow, Ui_MainWindow):
         global_init("database/db.db")
         self.session = create_session()
         self.WorkerUpdate.clicked.connect(self.load_table)
-        self.AddWorker.clicked.connect(self.update_worker)
         self.tableWorker.doubleClicked.connect(self.update_worker)
+        #self.AddWorker.clicked.connect(self.update_worker)
+        self.AddWorker.clicked.connect(self.add_worker)
 
-    #def add_worker(self, index: QModelIndex):
 
+    def add_worker(self):
+        self.worker_adder = WorkerAdder(self.session)
+        if self.worker_adder.exec_():
+            new_worker = Worker(
+                fullname=self.worker_adder.lineFIOWorker.text(),
+                jobrank=self.worker_adder.ChooseRankWorker.currentText(0),
+                phone=self.worker_adder.linePassportWorker_2.text(),
+                salary=self.worker_adder.lineSalaryWorker.text(),
+                passport=self.worker_adder.linePassportWorker.text(),
+                shop_id=self.worker_adder.ChooseWorkerPoint.currentData(),
+            )
+            self.session.add(new_worker)
+            self.session.commit()
+            self.load_table()
 
     def update_worker(self, index: QModelIndex):
         current_row = index.row()
