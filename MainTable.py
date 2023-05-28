@@ -25,7 +25,11 @@ class TableViewer(QMainWindow, Ui_MainWindow):
         global_init("database/db.db")
         self.session = create_session()
         self.WorkerUpdate.clicked.connect(self.load_table)
+        self.AddWorker.clicked.connect(self.update_worker)
         self.tableWorker.doubleClicked.connect(self.update_worker)
+
+    #def add_worker(self, index: QModelIndex):
+
 
     def update_worker(self, index: QModelIndex):
         current_row = index.row()
@@ -108,11 +112,11 @@ class WorkerUpdater(QDialog, Ui_WorkerAdd):
 
         self.SaveWorker.clicked.connect(self.save_data)
 
+
     def save_data(self):
         self.worker.fullname = self.lineFIOWorker.text()
-        cb = self.ChooseRankWorker.currentIndex()
-        RankWork = self.ChooseRankWorker.itemData(cb)
-        self.worker.jobrank = RankWork
+        cb = self.ChooseRankWorker.currentText()
+        self.worker.jobrank = cb
         self.worker.phone = self.linePassportWorker_2.text()
         self.worker.salary = self.lineSalaryWorker.text()
         self.worker.passport = self.linePassportWorker.text()
