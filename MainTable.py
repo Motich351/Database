@@ -40,7 +40,7 @@ class WorkerAdder(QDialog, Ui_WorkerAdd):
             phone=self.linePassportWorker_2.text(),
             salary=self.lineSalaryWorker.text(),
             passport=self.linePassportWorker.text(),
-            shop_id=int(self.ChooseWorkerPoint.currentData())
+            shop_id=(self.ChooseWorkerPoint.currentData())
         )
         self.accept()
 
