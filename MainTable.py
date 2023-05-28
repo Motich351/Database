@@ -132,33 +132,43 @@ class TableViewer(QMainWindow, Ui_MainWindow):
             self.tableWorker.setItem(row, 5, QTableWidgetItem(str(worker.passport)))
             self.tableWorker.setItem(row, 6, QTableWidgetItem(str(worker.shop.address)))
 
-    def delete_worker(self):
+    def delete_worker(self, delete_by_search=True):
         search_text = self.WorkerLine.text().strip()
-        if not search_text:
-            return  # Empty search text, do nothing
+
+        if delete_by_search:
+            if not search_text:
+                return  # Empty search text, do nothing
+
+            # Retrieve workers matching the search criteria
+            workers = self.session.query(Worker).filter(
+                or_(
+                    Worker.fullname.ilike(f'%{search_text}%'),
+                    Worker.phone.ilike(f'%{search_text}%'),
+                    Worker.passport.ilike(f'%{search_text}%'),
+                    Worker.jobrank.ilike(f'%{search_text}%'),
+                    Worker.salary.ilike(f'%{search_text}%'),
+                    Worker.shop.has(Shop.address.ilike(f'%{search_text}%'))
+                )
+            ).all()
+        else:
+            selected_rows = self.tableWorker.selectionModel().selectedRows()
+            if not selected_rows:
+                return  # No rows selected, do nothing
+
+            # Retrieve workers from the selected rows
+            workers = [self.session.query(Worker).get(int(self.tableWorker.item(row.row(), 0).text())) for row in
+                       selected_rows]
 
         # Confirm deletion
         reply = QMessageBox.question(
-            self, "Delete Worker", "Are you sure you want to delete the worker(s) matching the search?",
+            self, "Delete Worker", "Are you sure you want to delete the selected worker(s)?",
             QMessageBox.Yes | QMessageBox.No
         )
         if reply == QMessageBox.No:
             return  # Deletion canceled
 
-        # Retrieve workers matching the search criteria
-        workers = self.session.query(Worker).filter(
-            or_(
-                Worker.fullname.ilike(f'%{search_text}%'),
-                Worker.phone.ilike(f'%{search_text}%'),
-                Worker.passport.ilike(f'%{search_text}%'),
-                Worker.jobrank.ilike(f'%{search_text}%'),
-                Worker.salary.ilike(f'%{search_text}%'),
-                Worker.shop.has(Shop.address.ilike(f'%{search_text}%'))
-            )
-        ).all()
-
+        # Delete the workers from the database
         for worker in workers:
-            # Delete the worker from the database
             self.session.delete(worker)
             self.session.commit()
 
