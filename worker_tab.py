@@ -157,7 +157,7 @@ class WorkerTab(QWidget, Ui_Form):
 
         # Confirm deletion
         reply = QMessageBox.question(
-            self, "Delete Worker", "Are you sure you want to delete the selected worker(s)?",
+            self, "Удалить работника", "Вы хотите удалить выбранного(ых) работника(ов)?",
             QMessageBox.Yes | QMessageBox.No
         )
         if reply == QMessageBox.No:

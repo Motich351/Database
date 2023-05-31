@@ -24,7 +24,7 @@
        </font>
       </property>
       <property name="currentIndex">
-       <number>4</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="worker">
        <attribute name="title">
@@ -36,130 +36,7 @@
        <attribute name="title">
         <string>Точка</string>
        </attribute>
-       <layout class="QVBoxLayout" name="verticalLayout_9">
-        <item>
-         <layout class="QVBoxLayout" name="verticalLayout_8">
-          <item>
-           <layout class="QVBoxLayout" name="verticalLayout_7">
-            <item>
-             <layout class="QHBoxLayout" name="horizontalLayout_16">
-              <item>
-               <widget class="QLineEdit" name="linePoint"/>
-              </item>
-              <item>
-               <widget class="QPushButton" name="SearchPoint">
-                <property name="text">
-                 <string>Поиск</string>
-                </property>
-               </widget>
-              </item>
-             </layout>
-            </item>
-            <item>
-             <layout class="QHBoxLayout" name="horizontalLayout_7">
-              <item>
-               <widget class="QTableWidget" name="TablePoint">
-                <property name="enabled">
-                 <bool>true</bool>
-                </property>
-                <column>
-                 <property name="text">
-                  <string>id</string>
-                 </property>
-                </column>
-                <column>
-                 <property name="text">
-                  <string>Адрес</string>
-                 </property>
-                </column>
-                <column>
-                 <property name="text">
-                  <string>Доход</string>
-                 </property>
-                </column>
-                <column>
-                 <property name="text">
-                  <string>Товар</string>
-                 </property>
-                </column>
-                <column>
-                 <property name="text">
-                  <string>Количество работников </string>
-                 </property>
-                </column>
-               </widget>
-              </item>
-              <item>
-               <widget class="QScrollBar" name="verticalScrollBar_2">
-                <property name="orientation">
-                 <enum>Qt::Vertical</enum>
-                </property>
-               </widget>
-              </item>
-             </layout>
-            </item>
-           </layout>
-          </item>
-          <item>
-           <widget class="QPushButton" name="PointUpdate">
-            <property name="text">
-             <string>Обновить данные</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <layout class="QHBoxLayout" name="horizontalLayout_17">
-            <item>
-             <layout class="QHBoxLayout" name="horizontalLayout_18">
-              <item>
-               <layout class="QHBoxLayout" name="horizontalLayout_19">
-                <item>
-                 <layout class="QHBoxLayout" name="horizontalLayout_20">
-                  <item>
-                   <widget class="QPushButton" name="AddPoint">
-                    <property name="text">
-                     <string>Добавить</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item>
-                   <widget class="QPushButton" name="ChangePoint">
-                    <property name="text">
-                     <string>Изменить</string>
-                    </property>
-                   </widget>
-                  </item>
-                 </layout>
-                </item>
-                <item>
-                 <spacer name="horizontalSpacer_4">
-                  <property name="orientation">
-                   <enum>Qt::Horizontal</enum>
-                  </property>
-                  <property name="sizeHint" stdset="0">
-                   <size>
-                    <width>238</width>
-                    <height>18</height>
-                   </size>
-                  </property>
-                 </spacer>
-                </item>
-               </layout>
-              </item>
-             </layout>
-            </item>
-            <item>
-             <widget class="QPushButton" name="DeletePoint">
-              <property name="text">
-               <string>Удалить</string>
-              </property>
-             </widget>
-            </item>
-           </layout>
-          </item>
-         </layout>
-        </item>
-       </layout>
+       <layout class="QVBoxLayout" name="verticalLayout_9"/>
       </widget>
       <widget class="QWidget" name="Storage">
        <attribute name="title">
@@ -341,106 +218,7 @@
        <attribute name="title">
         <string>Товар</string>
        </attribute>
-       <layout class="QVBoxLayout" name="verticalLayout_12">
-        <item>
-         <layout class="QVBoxLayout" name="verticalLayout_5">
-          <item>
-           <layout class="QHBoxLayout" name="horizontalLayout_12">
-            <item>
-             <widget class="QLineEdit" name="lineProduct"/>
-            </item>
-            <item>
-             <widget class="QPushButton" name="SearchProduct">
-              <property name="text">
-               <string>Поиск</string>
-              </property>
-             </widget>
-            </item>
-           </layout>
-          </item>
-          <item>
-           <layout class="QHBoxLayout" name="horizontalLayout_10">
-            <item>
-             <widget class="QTableWidget" name="tableProduct">
-              <column>
-               <property name="text">
-                <string>id</string>
-               </property>
-              </column>
-              <column>
-               <property name="text">
-                <string>Название</string>
-               </property>
-              </column>
-              <column>
-               <property name="text">
-                <string>Цена</string>
-               </property>
-              </column>
-              <column>
-               <property name="text">
-                <string>Количество</string>
-               </property>
-              </column>
-             </widget>
-            </item>
-            <item>
-             <widget class="QScrollBar" name="verticalScrollBar_4">
-              <property name="orientation">
-               <enum>Qt::Vertical</enum>
-              </property>
-             </widget>
-            </item>
-           </layout>
-          </item>
-          <item>
-           <widget class="QPushButton" name="ProductUpdate">
-            <property name="text">
-             <string>Обновить данные</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <layout class="QHBoxLayout" name="horizontalLayout_11">
-            <item>
-             <widget class="QPushButton" name="AddProduct">
-              <property name="text">
-               <string>Добавить</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QPushButton" name="ChangeProduct">
-              <property name="text">
-               <string>Изменить</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <spacer name="horizontalSpacer_2">
-              <property name="orientation">
-               <enum>Qt::Horizontal</enum>
-              </property>
-              <property name="sizeHint" stdset="0">
-               <size>
-                <width>158</width>
-                <height>20</height>
-               </size>
-              </property>
-             </spacer>
-            </item>
-            <item>
-             <widget class="QPushButton" name="DeleteProduct">
-              <property name="text">
-               <string>Удалить</string>
-              </property>
-             </widget>
-            </item>
-           </layout>
-          </item>
-         </layout>
-        </item>
-       </layout>
+       <layout class="QVBoxLayout" name="verticalLayout_12"/>
       </widget>
      </widget>
     </item>
@@ -452,7 +230,7 @@
      <x>0</x>
      <y>0</y>
      <width>814</width>
-     <height>26</height>
+     <height>21</height>
     </rect>
    </property>
   </widget>

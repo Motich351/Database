@@ -3,15 +3,15 @@ from sqlalchemy.orm import relation, relationship
 
 from .base_meta import Base
 
-class Shop(Base):
-    __tablename__ = 'shop'
+class Product(Base):
+    __tablename__ = 'product'
     __table_args__ = {'extend_existing': True}
 
     id = Column(Integer, primary_key=True)
     address = Column(CHAR)
     income = Column(Integer)
     product_id = Column(ForeignKey('product.id'), nullable=True)
-    worker_id = Column(Integer)
+    worker_count_id = Column(Integer)
 
     #product = relationship('Product')
 

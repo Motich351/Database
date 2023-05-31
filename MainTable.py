@@ -21,8 +21,10 @@ class TableViewer(QMainWindow, Ui_MainWindow):
     def __init__(self):
         super().__init__()
         self.setupUi(self)
+        self.session = None
         self.initUI()
         self.table_is_changeable = True
+
 
     def initUI(self):
         pass
