@@ -21,10 +21,10 @@
        <item>
         <layout class="QHBoxLayout" name="horizontalLayout_16">
          <item>
-          <widget class="QLineEdit" name="linePoint"/>
+          <widget class="QLineEdit" name="lineShopProduct"/>
          </item>
          <item>
-          <widget class="QPushButton" name="SearchPoint">
+          <widget class="QPushButton" name="SearchShopProduct">
            <property name="text">
             <string>Поиск</string>
            </property>
@@ -35,7 +35,7 @@
        <item>
         <layout class="QHBoxLayout" name="horizontalLayout_7">
          <item>
-          <widget class="QTableWidget" name="TablePoint">
+          <widget class="QTableWidget" name="tableShopProduct">
            <property name="enabled">
             <bool>true</bool>
            </property>
@@ -52,7 +52,7 @@
           </widget>
          </item>
          <item>
-          <widget class="QScrollBar" name="verticalScrollBar_2">
+          <widget class="QScrollBar" name="verticalScrollBar">
            <property name="orientation">
             <enum>Qt::Vertical</enum>
            </property>
@@ -63,7 +63,7 @@
       </layout>
      </item>
      <item>
-      <widget class="QPushButton" name="PointUpdate">
+      <widget class="QPushButton" name="ShopProductUpdate">
        <property name="text">
         <string>Обновить данные</string>
        </property>
@@ -78,7 +78,7 @@
            <item>
             <layout class="QHBoxLayout" name="horizontalLayout_20">
              <item>
-              <widget class="QPushButton" name="AddPoint">
+              <widget class="QPushButton" name="AddShopProduct">
                <property name="text">
                 <string>Добавить</string>
                </property>
@@ -104,7 +104,7 @@
         </layout>
        </item>
        <item>
-        <widget class="QPushButton" name="DeletePoint">
+        <widget class="QPushButton" name="DeleteShopProduct">
          <property name="text">
           <string>Удалить</string>
          </property>

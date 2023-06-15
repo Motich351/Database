@@ -88,7 +88,7 @@ class WorkerTab(QWidget, Ui_Form):
                 worker.fullname = self.tableWidget.item(row, col).text()
                 self.session.commit()
             elif col == 2:
-                worker.jobramk = self.tableWidget.item(row, col).text()
+                worker.jobrank = self.tableWidget.item(row, col).text()
                 self.session.commit()
             elif col == 3:
                 worker.phone = self.tableWidget.item(row, col).text()

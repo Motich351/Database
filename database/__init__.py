@@ -4,3 +4,4 @@ from .Payment import Payment
 from .worker import Worker
 from .shop import Shop
 from .product import Product
+from .shop_product import ShopProduct

@@ -12,7 +12,7 @@ from PyQt5.QtWidgets import QApplication, QWidget, QPushButton, QMainWindow, QTa
 from ui_Worker import Ui_WorkerAdd
 from ui_Product import Ui_ProductAdd
 from ui_Client import Ui_ClientAdd
-from ui_table import Ui_MainWindow
+from ui_table2 import Ui_MainWindow
 
 from PyQt5.QtCore import Qt, QModelIndex
 

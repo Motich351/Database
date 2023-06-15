@@ -1,7 +1,8 @@
-from sqlalchemy import Column,Integer,Text, CHAR,ForeignKey
-from sqlalchemy.orm import relation, relationship
+from sqlalchemy import Column,Integer, CHAR, ForeignKey
+from sqlalchemy.orm import relationship
 
 from .base_meta import Base
+
 
 class Shop(Base):
     __tablename__ = 'shop'
@@ -10,13 +11,6 @@ class Shop(Base):
     id = Column(Integer, primary_key=True)
     address = Column(CHAR)
     income = Column(Integer)
-    product_id = Column(ForeignKey('product.id'), nullable=True)
-    worker_id = Column(Integer)
 
-    #product = relationship('Product')
+    products = relationship('ShopProduct', back_populates='shop')
 
-    def __str__(self):
-        return f"Точка {self.id}: {self.adress}; Доход: {self.profit};"
-
-    def __repr__(self):
-        return str(self)

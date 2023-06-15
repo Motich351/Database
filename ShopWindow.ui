@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>createShop</class>
+ <widget class="QDialog" name="createShop">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>224</width>
+    <height>218</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Dialog</string>
+  </property>
+  <layout class="QHBoxLayout" name="horizontalLayout">
+   <item>
+    <layout class="QVBoxLayout" name="WindowCShop">
+     <item>
+      <layout class="QVBoxLayout" name="Window2CShop">
+       <item>
+        <layout class="QVBoxLayout" name="LabelCShop">
+         <item>
+          <widget class="QLabel" name="labelShop">
+           <property name="text">
+            <string>Изменение магазина</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="id_Shop">
+           <property name="text">
+            <string>id</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="ShopAdd">
+         <item>
+          <widget class="QLabel" name="labelAddShop">
+           <property name="text">
+            <string>Адрес</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="lineAddShop"/>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="ShopIncome">
+         <item>
+          <widget class="QLabel" name="labelShopIncome">
+           <property name="text">
+            <string>Доход</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="ShopIncome_2"/>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <widget class="QPushButton" name="pushButton">
+       <property name="text">
+        <string>Сохранить</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

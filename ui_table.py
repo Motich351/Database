@@ -23,7 +23,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_21 = QtWidgets.QHBoxLayout(self.worker)
         self.horizontalLayout_21.setObjectName("horizontalLayout_21")
         self.tabWiget.addTab(self.worker, "")
-        self.point = ShopTab()
+        self.point = ShopTab() #QtWidgets.QWidget()
         self.point.setObjectName("point")
         self.verticalLayout_9 = QtWidgets.QVBoxLayout(self.point)
         self.verticalLayout_9.setObjectName("verticalLayout_9")
